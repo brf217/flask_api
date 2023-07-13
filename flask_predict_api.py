@@ -1,23 +1,15 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-"""
-Created on Sun Aug 26 14:16:21 2018
-
-@author: feebr01
-"""
-
 import pickle
 from flask import Flask, request
 import numpy as np
 import pandas as pd
 from flasgger import Swagger
 
+'''http://localhost:5000/apidocs/    - how to see flask api ui'''
 
 #open pickle file and make sure to tell it is a binary 'rb' read
 with open ('/Users/feebr01/Documents/p_docker/rf.pkl', 'rb') as model_file:
     model = pickle.load(model_file)
     
-
 app = Flask(__name__)
 swagger = Swagger(app)  #make ui look nice
 
@@ -60,7 +52,6 @@ def predict_iris():
     
     return str(prediction)
 
-
 @app.route('/predict_file', methods = ['POST'])
 def predict_iris_file():
     '''Example file enpoint returning a prediction of iris
@@ -78,14 +69,10 @@ def predict_iris_file():
     prediction = model.predict(input_data)
     return str(list(prediction))
 
-
 if __name__ == '__main__':
     app.run()
     
-    
-    
-    
-'''http://localhost:5000/apidocs/    - how to see flask api ui'''
+
     
     
     
