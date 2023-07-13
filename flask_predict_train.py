@@ -1,12 +1,3 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-"""
-Created on Sun Aug 26 10:59:09 2018
-
-@author: feebr01
-"""
-
- 
 #RF Classifier
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.datasets import load_iris
@@ -23,21 +14,17 @@ y = iris.target
 X_train, X_test, y_train, y_test = train_test_split(X,y, 
     random_state = 42, test_size = 0.5)
 
-
 # model
 clf = RandomForestClassifier(n_estimators = 10)
 
 #train model
 clf.fit(X_train, y_train)
 
-
 #predict
 predicted = clf.predict(X_test)
 
-
 #check accuracy
 print(accuracy_score(predicted, y_test))
-
 
 #pickle the file for later use
 import pickle
